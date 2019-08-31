@@ -24,7 +24,7 @@ function beginDraw (evt){
     context.beginPath();
     
     if (islocaldrawing){
-        canvas.addEventListener("mousemove", drawImage,false);
+        canvas.addEventListener("mousemove", defineImage,false);
         sendData(evt, "beginDraw");
     }
 }
@@ -37,7 +37,7 @@ function drawImage (evt, currentCoords){
     context.stroke();
     
     if (islocaldrawing){
-        sendData(evt, "drawImage");
+        sendData(evt, "defineImage");
         
         
     }
@@ -46,7 +46,7 @@ function drawImage (evt, currentCoords){
 
 function end (evt){
     if (islocaldrawing){
-       canvas.removeEventListener("mousemove", drawImage, false);
+       canvas.removeEventListener("mousemove", defineImage, false);
        sendData(evt, "beginDraw");
       
     }
@@ -119,6 +119,13 @@ function defineImage(evt) {
     drawImageText(json);
          drawImageText(json);
          sendText(json);
+         
+          if (islocaldrawing){
+        sendData(evt, "defineImage");
+        
+        
+    }
+         
     
 }
 
@@ -128,14 +135,21 @@ function drawImageText(image) {
     var json = JSON.parse(image);
     context.fillStyle = json.color;
     switch (json.shape) {
-    case "circle":
+    case "line1":
         context.beginPath();
-        context.arc(json.coords.x, json.coords.y, 5, 0, 2 * Math.PI, false);
+        context.arc(json.coords.x, json.coords.y, 4, 0, 4 * Math.PI, false);
         context.fill();
         break;
-    case "square":
+    case "line2":
+        context.beginPath();
+        context.arc(json.coords.x, json.coords.y, 6, 0, 4 * Math.PI, false);
+        context.fill();
+        break;
+    case "line3":
     default:
-        context.fillRect(json.coords.x, json.coords.y, 10, 10);
+        context.beginPath();
+        context.arc(json.coords.x, json.coords.y, 10, 0, 8 * Math.PI, false);
+        context.fill();
         break;
     }
 }

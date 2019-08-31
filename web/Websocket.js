@@ -37,7 +37,7 @@ function onMessage(evt) {
         drawImageText(evt.data);
         var json = JSON.parse(evt.data);
         if (json.methodName =="beginDraw") beginDraw(null);
-        if (json.methodName =="drawImage") drawImage(null, json.coords);
+        if (json.methodName =="defineImage") defineImage(null, json.coords);
 }
 
 
