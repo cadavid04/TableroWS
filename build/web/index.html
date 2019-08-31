@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>
+    <head>
+        <title>Start page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Tablero compartido</h1>
+        <div id="output"></div>
+        <table>
+            <tr>
+                <td>
+                    <canvas id="myCanvas" width="250" height="150"
+                            style="border: 1px solid #000000;"></canvas>     
+                </td>
+                <td>
+                    <form name="inputForm">
+                        <table>
+                            <tr>
+                                <th>Color</th>
+                                <td><input type="radio" name="color" value="#FF0000" checked="true">Rojo</td>
+                                <td><input type="radio" name="color" value="#0000FF">Azul</td>
+                                <td><input type="radio" name="color" value="#FF9900">Naranja</td>
+                                <td><input type="radio" name="color" value="#33CC33">Verde</td>
+                            </tr>
+                            <tr>
+                            <th>Forma</th>
+                            <td><input type="radio" name="shape" value="square" checked="true">Cuadrado</td>
+                            <td><input type="radio" name="shape" value="line">Linea</td>
+                            </tr> 
+                        </table>
+                        
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <script type="text/javascript" src="Websocket.js"></script>
+        <script type="text/javascript" src="Tablero.js"></script>
+
+    </body>
+</html>
+
