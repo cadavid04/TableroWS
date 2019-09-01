@@ -29,21 +29,6 @@ function beginDraw (evt){
     }
 }
 
-function drawImage (evt, currentCoords){
-    var coords;
-    if (islocaldrawing) coords = getCoords(evt.clientX, evt.clientY);
-    else coords = getCoords(currentCoords.x, currentCoords.y);
-    context.lineTo(coords.x, coords.y);
-    context.stroke();
-    
-    if (islocaldrawing){
-        sendData(evt, "defineImage");
-        
-        
-    }
-    
-}
-
 function end (evt){
     if (islocaldrawing){
        canvas.removeEventListener("mousemove", defineImage, false);
@@ -64,22 +49,6 @@ function sendData(evt, methodName){
             }
            
             ));
-}
-
-function getCurrentPos(evt) {
-    var rect = canvas.getBoundingClientRect();
-    return {
-        x: evt.clientX - rect.left,
-        y: evt.clientY - rect.top
-    };
-}
-
-function getCoords(clientX, clientY) {
-    var rect = canvas.getBoundingClientRect();
-    return {
-        x: clientX - rect.left,
-        y: clientY - rect.top
-    };
 }
 
 function getCurrentPos(evt) {
@@ -150,6 +119,7 @@ function drawImageText(image) {
         context.beginPath();
         context.arc(json.coords.x, json.coords.y, 10, 0, 8 * Math.PI, false);
         context.fill();
+        
         break;
     }
 }
